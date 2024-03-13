@@ -3,8 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/styles.dart';
 
-class RatingWidget extends StatelessWidget {
-  const RatingWidget({super.key});
+class BookRating extends StatelessWidget {
+  const BookRating({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,4 @@
-import 'package:bookly_app/features/home/presentation/views/widgets/rating_widget.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../constants.dart';
@@ -68,7 +68,7 @@ class BestSellerListViewItem extends StatelessWidget {
                         style: Styles.textStyle15,
                       ),
                       Spacer(),
-                      RatingWidget()
+                      BookRating()
                     ],
                   ),
                 ],
