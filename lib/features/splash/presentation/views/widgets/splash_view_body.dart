@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../../../../constants.dart';
+
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
 
@@ -48,10 +50,10 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void navigateToHomeView(){
     Future.delayed(const Duration(seconds: 2), () {
-      Get.to(
+      Get.off(
             () => const HomeView(),
         transition: Transition.fadeIn,
-        duration: const Duration(milliseconds: 250),
+        duration: kTransitionDuration,
       );
     });
   }
