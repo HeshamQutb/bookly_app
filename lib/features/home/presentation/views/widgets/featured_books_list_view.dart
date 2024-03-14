@@ -1,4 +1,4 @@
-import 'package:bookly_app/features/home/presentation/views/widgets/featured_books_list_view_item.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_book.dart';
 import 'package:flutter/cupertino.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
@@ -14,7 +14,7 @@ class FeaturedBooksListView extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: 10,
-          itemBuilder: (context, index) => const FeaturedBooksListViewItem(),
+          itemBuilder: (context, index) => const CustomBook(),
           separatorBuilder: (context, index) => const SizedBox(
             width: 15,
           ),

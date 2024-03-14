@@ -1,16 +1,23 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/styles.dart';
 
 class BookRating extends StatelessWidget {
-  const BookRating({super.key});
-
+  const BookRating(
+      {super.key, this.mainAxisAlignment = MainAxisAlignment.start});
+  final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        Icon(FontAwesomeIcons.solidStar,color: Color(0xffFFDD4F),size: 13,),
+    return  Row(
+      mainAxisAlignment: mainAxisAlignment,
+      children: const [
+        Icon(
+          FontAwesomeIcons.solidStar,
+          color: Color(0xffFFDD4F),
+          size: 13,
+        ),
         SizedBox(
           width: 6.3,
         ),
@@ -21,8 +28,12 @@ class BookRating extends StatelessWidget {
         SizedBox(
           width: 9,
         ),
-        Text(
-          '(2390)',
+        Opacity(
+          opacity: 0.5,
+          child: Text(
+            '(2390)',
+            style: Styles.textStyle14,
+          ),
         ),
       ],
     );

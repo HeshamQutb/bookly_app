@@ -1,8 +1,10 @@
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
-class FeaturedBooksListViewItem extends StatelessWidget {
-  const FeaturedBooksListViewItem({super.key});
+import '../../../../../constants.dart';
+
+class CustomBook extends StatelessWidget {
+  const CustomBook({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class FeaturedBooksListViewItem extends StatelessWidget {
             image: AssetImage(AssetsData.testImage),
             fit: BoxFit.fill,
           ),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(kRadiusValue),
         ),
       ),
     );

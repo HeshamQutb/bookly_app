@@ -1,5 +1,6 @@
 import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,7 +31,7 @@ class BestSellerListViewItem extends StatelessWidget {
                       image: AssetImage(AssetsData.testImage),
                       fit: BoxFit.fill,
                     ),
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(kRadiusValue),
                   ),
                 ),
               ),
@@ -57,10 +58,11 @@ class BestSellerListViewItem extends StatelessWidget {
                     const SizedBox(
                       height: 2,
                     ),
-                    Text(
-                      'J.K. Rowling',
-                      style: Styles.textStyle14.copyWith(
-                        color: const Color(0xff707070),
+                    const Opacity(
+                      opacity: 0.7,
+                      child: Text(
+                        'J.K. Rowling',
+                        style: Styles.textStyle14,
                       ),
                     ),
                     const Row(
