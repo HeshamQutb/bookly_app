@@ -1,19 +1,21 @@
+import 'package:bookly_app/core/utils/functions/launch_custom_url.dart';
 import 'package:bookly_app/core/widgets/custom_button.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/styles.dart';
 
 class BooksAction extends StatelessWidget {
-  const BooksAction({super.key});
-
+  const BooksAction({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: [
-          Expanded(
+          const Expanded(
               child: CustomButton(
             textStyle: Styles.textStyle18,
             backgroundColor: Colors.white,
@@ -22,21 +24,35 @@ class BooksAction extends StatelessWidget {
               topLeft: Radius.circular(kRadiusValue),
               bottomLeft: Radius.circular(kRadiusValue),
             ),
-            text: '19.99€',
+            text: 'Free',
           )),
           Expanded(
               child: CustomButton(
+            onPressed: () {
+              launchCustomUrl(
+                context: context,
+                url: bookModel.volumeInfo.previewLink,
+              );
+            },
             textStyle: Styles.textStyle16,
-            backgroundColor: Color(0xffEF8262),
+            backgroundColor: const Color(0xffEF8262),
             textColor: Colors.white,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topRight: Radius.circular(kRadiusValue),
               bottomRight: Radius.circular(kRadiusValue),
             ),
-            text: 'Free preview',
+            text: getText(bookModel),
           ))
         ],
       ),
     );
+  }
+
+  String getText(BookModel bookModel) {
+    if (bookModel.volumeInfo.previewLink == null) {
+      return 'Not Available';
+    } else {
+      return 'Preview';
+    }
   }
 }
