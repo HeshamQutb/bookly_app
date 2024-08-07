@@ -10,6 +10,7 @@ import 'features/home/presentation/view_model/featured_books_cubit/featured_book
 import 'features/home/presentation/view_model/newest_books_cubit/newest_books_cubit.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   setupServiceLocator();
   runApp(const MyApp());
 }
@@ -24,12 +25,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => FeaturedBooksCubit(
             getIt.get<HomeRepoImpl>(),
-          ),
+          )..fetchFeaturedBooks(),
         ),
         BlocProvider(
           create: (context) => NewestBooksCubit(
             getIt.get<HomeRepoImpl>(),
-          ),
+          )..fetchNewestBooks(),
         ),
       ],
       child: MaterialApp.router(

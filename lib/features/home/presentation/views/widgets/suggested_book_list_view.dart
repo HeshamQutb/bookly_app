@@ -14,7 +14,10 @@ class SuggestedBooksListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) => const Padding(
           padding: EdgeInsets.only(right: 10.0),
-          child: CustomBook(),
+          child: CustomBook(
+            imageUrl:
+                'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',
+          ),
         ),
       ),
     );

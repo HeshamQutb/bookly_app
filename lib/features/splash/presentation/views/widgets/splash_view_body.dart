@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
-
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
 
@@ -47,7 +46,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     );
   }
 
-  void navigateToHomeView(){
+  void navigateToHomeView() {
     Future.delayed(const Duration(seconds: 2), () {
       GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
     });

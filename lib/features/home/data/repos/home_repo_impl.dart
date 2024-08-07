@@ -1,12 +1,13 @@
 import 'package:bookly_app/core/errors/failures.dart';
 import 'package:bookly_app/core/utils/api_service.dart';
-import 'package:bookly_app/features/home/data/models/book_model.dart';
 import 'package:bookly_app/features/home/data/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
+import '../models/book_model/book_model.dart';
+
 class HomeRepoImpl implements HomeRepo {
-  ApiServices apiServices;
+  ApiService apiServices;
   HomeRepoImpl(this.apiServices);
 
   @override
@@ -38,8 +39,7 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var data = await apiServices.get(
-        endPoint:
-            'volumes?Filtering=free-ebooks&q=subject:programming',
+        endPoint: 'volumes?Filtering=free-ebooks&q=subject:programming',
       );
       List<BookModel> books = [];
 
