@@ -5,32 +5,32 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
-import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/styles.dart';
+import '../../../../../core/widgets/custom_book_image.dart';
+import '../../../../home/data/models/book_model/book_model.dart';
 
 class SearchBookListViewItem extends StatelessWidget {
-  const SearchBookListViewItem({super.key,});
+  const SearchBookListViewItem({
+    super.key,
+    required this.bookModel,
+  });
+  final BookModel bookModel;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView);
+        GoRouter.of(context).push(
+          AppRouter.kBookDetailsView,
+          extra: bookModel,
+        );
       },
       child: SizedBox(
         height: 130,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 2.6 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  image: const DecorationImage(
-                    image: AssetImage(AssetsData.testImage),
-                    fit: BoxFit.fill,
-                  ),
-                  borderRadius: BorderRadius.circular(kRadiusValue),
-                ),
-              ),
+            CustomBookImage(
+              imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? '',
             ),
             const SizedBox(
               width: 30,
@@ -43,7 +43,7 @@ class SearchBookListViewItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
-                      'Harry Potter and the Goblet of Fire',
+                      bookModel.volumeInfo.title!,
                       style: Styles.textStyle20.copyWith(
                         fontFamily: kGTSectraFine,
                         fontWeight: FontWeight.w400,
@@ -55,22 +55,20 @@ class SearchBookListViewItem extends StatelessWidget {
                   const SizedBox(
                     height: 2,
                   ),
-                  const Opacity(
+                  Opacity(
                     opacity: 0.7,
                     child: Text(
-                      'J.K. Rowling',
+                      bookModel.volumeInfo.authors?.first ?? 'Unknown',
                       style: Styles.textStyle14,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   const Row(
                     children: [
                       Text(
-                        '19.99 ',
+                        'Free',
                         style: Styles.textStyle20,
-                      ),
-                      Text(
-                        '€',
-                        style: Styles.textStyle15,
                       ),
                       Spacer(),
                       BookRating()

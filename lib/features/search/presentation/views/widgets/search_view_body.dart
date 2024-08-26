@@ -22,7 +22,7 @@ class SearchViewBody extends StatelessWidget {
                   height: 16,
                 ),
                 Text(
-                  'Best Seller',
+                  'Search Results',
                   style: Styles.textStyle18,
                 ),
                 SizedBox(
